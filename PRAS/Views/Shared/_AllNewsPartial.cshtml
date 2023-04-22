@@ -1,0 +1,27 @@
+﻿@model IEnumerable<PRAS.DataTransferObjects.NewsDto>
+@if (Model.Any())
+{
+    <div class="row row-cols-3 align-items-center">
+        @foreach (var el in Model)
+        {
+            <div class="col align-content-center">
+                <div class="card" style="width: 25rem;">
+                    <div class="card-body">
+                        @{
+                            var path = $"https://localhost:7285/images/{el.ImagePath}";
+                            <div style="border-bottom: 1px solid #d8e2ef; padding-bottom: 10px; margin-bottom: 5px">
+                                <img class="img-fluid" src="@path" />
+                            </div>
+                            <div>
+                                <h3>
+                                    <a class="text-decoration-none" style="color: black" asp-controller="News" asp-action="News" asp-route-newsId="@el.Id">@el.Title</a>
+                                </h3>
+                                <p class="card-text">@el.SubTitle</p>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

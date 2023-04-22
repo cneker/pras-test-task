@@ -1,0 +1,27 @@
+﻿@model PRAS.DataTransferObjects.NewsDetailDto
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="container d-flex align-items-center text-center justify-content-center">
+    <div class="card" style="width: 200rem">
+        <div class="card-body" >
+            @{
+                var path = $"https://localhost:7285/images/{Model.ImagePath}";
+
+                <div style="border-bottom: 1px solid #d8e2ef; padding-bottom: 10px; margin-bottom: 5px">
+                    <img class="img-fluid" style="max-width: 50%" src="@path" />
+                </div>
+                <div>
+                    <h3 class="card-title">@Model.Title</h3>
+                    <h5 class="card-text">@Model.SubTitle</h5>
+                    <div style="border-top: 1px solid #d8e2ef; padding-top: 10px; margin-top: 5px">
+                        <p class="card-text">@Model.Description</p>
+                    </div>
+
+                </div>
+            }
+        </div>
+    </div>
+</div>

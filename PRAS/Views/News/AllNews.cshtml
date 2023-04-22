@@ -1,0 +1,22 @@
+﻿@using PRAS.ViewModel;
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+@model AllNewsViewModel
+
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+<div id="scrolList" class="container text-center align-items-center">
+    <partial name="_AllNewsPartial" model="Model.AllNews"/>
+</div>
+@if (Model.HasNext)
+{
+    <div class="align-items-center text-center" style="margin-right: 1rem">
+        <input id="load-more" class="btn btn-primary btn-lg btn-block" type="submit" value="@Localizer["LoadButton"]" />
+    </div>
+}
+
+<script src="~/js/all-news.js"></script>

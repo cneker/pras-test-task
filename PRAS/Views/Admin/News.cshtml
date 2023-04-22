@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+@model PRAS.DataTransferObjects.NewsDetailDto
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<style>
+    .image-upload > input {
+        visibility: hidden;
+        width: 0;
+        height: 0
+    }
+</style>
+
+<div class="container d-flex align-items-center text-center justify-content-center">
+    <div class="card" style="width: 200rem">
+        <div class="card-body" >
+            @{
+                var path = $"https://localhost:7285/images/{Model.ImagePath}";
+
+                var url = "url(" + path + ")";
+                <div class="image-upload">
+                    <label for="file">
+                        <img name="@Model.ImagePath" id="image" class="img-fluid" style="max-width: 50%" src="@path" />
+                    </label>
+                </div>
+            }
+            <label>@Localizer["ChangingImage"]</label>
+            <input style="visibility:hidden" type="file" accept="image/*" id="file">
+            <div class="form-outline mb-4">
+                <h3>@Localizer["Title"]</h3>
+                <input id="title" class="form-control form-control-lg" type="text" asp-for="Title"/>
+            </div>
+            <div class="form-outline mb-4">
+                <h5>@Localizer["SubTitle"]</h5>
+                <input id="subtitle" class="form-control form-control-lg" type="text" asp-for="SubTitle"/>
+            </div>
+            <div class="form-outline mb-4">
+                <h5>@Localizer["Description"]</h5>
+                <textarea id="description" class="form-control" rows="10" cols="50" asp-for="Description"></textarea>
+            </div>
+            <input hidden id="id" type="text" asp-for="Id"/>
+            <input id="delete" class="btn btn-primary btn-lg btn-block" type="button" value="@Localizer["DeleteButton"]" />
+            <input id="update" class="btn btn-primary btn-lg btn-block" type="submit" value="@Localizer["UpdateButton"]" />
+        </div>
+    </div>
+</div>
+
+<script src="~/js/admin-news.js"></script>

@@ -1,0 +1,17 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+@model IEnumerable<PRAS.DataTransferObjects.NewsDto>
+
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+<link rel="stylesheet" href="~/css/layout.css" asp-append-version="true" />
+
+<div class="container text-center">
+    <partial name="_AllNewsPartial" />
+</div>
+
+<script src="~/js/index.js"></script>
